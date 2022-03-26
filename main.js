@@ -1,43 +1,32 @@
-( () => { //IIFE expresión de función inmediatamente invocada. También conocido cómo función autoejecutable. Oculta las variables y funciones
-const btn = document.querySelector("[data-form-btn]");
+import checkComplete from "./components/checkedComplete.js";
+import deleteIcon from "./components/deleteICon.js";
 
-const createTask = (event) => {
-    event.preventDefault();
-    const input = document.querySelector("[data-form-input]");
-    const value = input.value;
-    const list = document.querySelector("[data-list]");
-    const task = document.createElement("li");
-    task.classList.add("card")
-    input.value = "";
-    const taskContent = document.createElement("div");
-    taskContent.appendChild(checkComplete());
-    const titleTask = document.createElement("span");
-    titleTask.classList.add("task")
-    titleTask.innerHTML = value;
-    taskContent.appendChild(titleTask);
+(() => { //IIFE expresión de función inmediatamente invocada. También conocido cómo función autoejecutable. Oculta las variables y funciones
+    const btn = document.querySelector("[data-form-btn]");
 
-    //backticks para buscar es como la comilla invertida
-    const content = `
-    <i class="fas fa-trash-alt trashIcon icon"></i>`;
-    //task.innerHTML = content;
-    task.appendChild(taskContent);
-    list.appendChild(task);
-}
+    const createTask = (event) => {
+        event.preventDefault();
+        const input = document.querySelector("[data-form-input]");
+        const value = input.value;
+        const list = document.querySelector("[data-list]");
+        const task = document.createElement("li");
+        task.classList.add("card")
+        input.value = "";
 
-btn.addEventListener("click", createTask);
+        const taskContent = document.createElement("div");
+        const titleTask = document.createElement("span");
+        titleTask.classList.add("task");
+        titleTask.innerHTML = value;
+        taskContent.appendChild(checkComplete());
+        taskContent.appendChild(titleTask);
+        //taskContent.appendChild(deleteIcon());
 
-const checkComplete = () => {
-    const i = document.createElement("i");
-    i.classList.add("far","fa-check-square","icon");
-    i.addEventListener("click", completeTask);
-    return i;
-}
+        //backticks para buscar es como la comilla invertida
 
-const completeTask = (event) => {
-    const element = event.target;
-    element.classList.toggle("fas"); //toggle cambia la clase (CSS) si es que es diferente.
-    element.classList.toggle("completeICon"); //solo puede ser una. 
-    element.classList.toggle("far"); //alterna entre una clase y la otra
-};
+        task.appendChild(taskContent);
+        task.appendChild(deleteIcon());
+        list.appendChild(task);
+    }
 
-}) ()
+    btn.addEventListener("click", createTask);
+})()
