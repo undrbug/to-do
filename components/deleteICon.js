@@ -11,7 +11,6 @@ const deleteTask = (id) => {
     const task = JSON.parse(localStorage.getItem("task"));
     const index = task.findIndex((item) => item.id == id);
     const newTask = task.splice(index, 1);
-    console.log(task);
     li.innerHTML = "";
     localStorage.setItem("task", JSON.stringify(task));
     displayTasks();

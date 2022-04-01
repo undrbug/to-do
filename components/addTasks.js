@@ -43,7 +43,6 @@ export const createTask = ({value, dateFormat, complete, id}) => {
     const check = checkComplete(id)
 
 if (complete){
-    console.log("completada");
     check.classList.toggle("fas"); //toggle cambia la clase (CSS) si es que es diferente.
     check.classList.toggle("completeICon"); //solo puede ser una. 
     check.classList.toggle("far"); //alterna entre una clase y la otra

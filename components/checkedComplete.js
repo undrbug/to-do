@@ -6,7 +6,6 @@ const checkComplete = (id) => {
 }
 
 const completeTask = (event, id) => {
-    //console.log("el id es:", id);
     const element = event.target;
     element.classList.toggle("fas"); //toggle cambia la clase (CSS) si es que es diferente.
     element.classList.toggle("completeICon"); //solo puede ser una. 
